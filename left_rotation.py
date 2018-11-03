@@ -7,14 +7,12 @@ import re
 import sys
 
 # Complete the rotLeft function below.
-def rotLeft(a, d):
-    n = len(a)
-    for rotate_time in range(d):
-        temp = a[0]
-        for i in range(n - 1):
-            a[i] = a[i + 1]
-        a[n - 1] = temp
-    return a
+#def rotLeft(a, d):
+
+def rotLeft(a, n, d) :
+    rotations = d % n
+    new_array = a[rotations:] + a[:rotations]
+    return new_array
     
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
@@ -27,10 +25,9 @@ if __name__ == '__main__':
 
     a = list(map(int, input().rstrip().split()))
 
-    result = rotLeft(a, d)
+    result = rotLeft(a, n, d)
 
     fptr.write(' '.join(map(str, result)))
     fptr.write('\n')
 
     fptr.close()
-
