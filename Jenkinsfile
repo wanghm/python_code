@@ -1,9 +1,9 @@
 node {
     stage('SCM Checkout'){
-        sh "SCM Checkout OK."
+        sh "echo SCM Checkout OK."
     }
     stage('Mvn Package'){
-        sh "Mvn Package OK."
+        sh "echo Mvn Package OK."
     }
     
 }
