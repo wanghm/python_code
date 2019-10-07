@@ -15,3 +15,4 @@ if __name__ == '__main__':
     for _ in range(n):
         num = int(input())
         print(check_prime(num))
+        
