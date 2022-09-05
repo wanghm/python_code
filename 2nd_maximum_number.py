@@ -1,14 +1,10 @@
 if __name__ == '__main__':
     n = int(input())
-    arr = map(int, input().split())
+    l = list(map(int, input().split()))
     
-    l_arr = list(arr)
-    max_score = max(l_arr)
+    z = max(l)
+    while max(l) == z:
+        l.remove(z)
     
-    while max(l_arr) == max_score:
-        l_arr.remove(max_score)
-    
-    print(max(l_arr))
+    print(max(l))
 
-
-    
