@@ -15,14 +15,14 @@ def encode_multipart_formdata(fields):
              + ''.join(random.sample(string.ascii_letters + string.digits, 16))
 
     body = (
-        "".join("--%s\r\n"
-                "Content-Disposition: form-data; name=\"%s\"\r\n"
+        "".join("--{}\r\n"
+                "Content-Disposition: form-data; name=\"{}\"\r\n"
                 "\r\n"
-                "%s\r\n" % (boundary, field, value)
+                "{}\r\n".format(boundary, field, value)
                 for field, value in fields.items()) +
-        "--%s--\r\n" % boundary
+        "--{}--\r\n".format(boundary)
     )
-
+    
     content_type = "multipart/form-data; boundary=%s" % boundary
 
     return body, content_type
