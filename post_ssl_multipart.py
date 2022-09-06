@@ -28,32 +28,37 @@ def encode_multipart_formdata(fields):
     return body, content_type
 
 
-with open(file1, 'rb') as key_f:
-    key_data = key_f.read()
-with open(file2, 'rb') as crt_f:
-    crt_data = crt_f.read()
-with open(file3, 'rb') as ca_f:
-    ca_data = ca_f.read()
+def main():
 
-fields = {
-    'keyType': 'RSA_2048',
-    'key': key_data,
-    'cert': crt_data,
-    'caChain': ca_data
-}
+    with open(file1, 'rb') as key_f:
+        key_data = key_f.read()
+    with open(file2, 'rb') as crt_f:
+        crt_data = crt_f.read()
+    with open(file3, 'rb') as ca_f:
+        ca_data = ca_f.read()
 
-formdata, content_type = encode_multipart_formdata(fields)
-print("#########formdata##############")
-print(formdata)
-print("#########content-type##############")
-print(content_type)
+    fields = {
+        'keyType': 'RSA_2048',
+        'key': key_data,
+        'cert': crt_data,
+        'caChain': ca_data
+    }
 
-headers = {
-    "Connection": "keep-alive",
-    "Content-Type": content_type
-}
+    formdata, content_type = encode_multipart_formdata(fields)
+    print("#########formdata##############")
+    print(formdata)
+    print("#########content-type##############")
+    print(content_type)
 
-r = requests.post('http://httpbin.org/post', headers=headers, data=formdata)
+    headers = {
+        "Connection": "keep-alive",
+        "Content-Type": content_type
+    }
 
-print(r.text)
+    r = requests.post('http://httpbin.org/post', headers=headers, data=formdata)
 
+    #print(r.text)
+
+if __name__ == "__main__":
+    main()
+    
