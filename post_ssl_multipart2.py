@@ -43,7 +43,6 @@ files = {'key': ('key.pem', open('key.pem', 'rb').read(), 'application/x-x509-ca
          'cert': ('crt.pem', open('crt.pem', 'rb').read(), 'application/x-x509-ca-cert'),
          'caChain': ('cacert.pem', open('cacert.pem', 'rb').read(), 'application/x-x509-ca-cert')}
 
-#headers = {'Content-Type': 'multipart/form-data'}
 data, content_type = encode_multipart_formdata(fields, files)
 headers = {'Content-Type': content_type}
  
